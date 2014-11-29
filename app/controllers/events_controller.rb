@@ -2,7 +2,10 @@ class EventsController < ApplicationController
 
   before_filter :is_admin, :only => [:new, :event_list, :result]
 
+  def redirect
+    redirect_to "http://saf.sbs.co.kr"
 
+  end
   def sns
     @provider = params[:provider]
   end
@@ -61,6 +64,7 @@ class EventsController < ApplicationController
     promotion.title = params[:title]
     promotion.content = params[:content]
     promotion.token = SecureRandom.hex(10)
+    promotion.post_url = params[:post_url]
     promotion.save
     redirect_to :action => "result", :id => promotion.id
   end
