@@ -2,6 +2,11 @@ class EventsController < ApplicationController
 
   before_filter :is_admin, :only => [:new, :event_list, :result]
 
+
+  def sns
+    @provider = params[:provider]
+  end
+
   def event_list
 
   end

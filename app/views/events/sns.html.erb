@@ -1,0 +1,31 @@
+  <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation"><a href="#" onclick="window.open('http://www.facebook.com/sbssaf','new'); return false"><img src="/images/facebook_logo.png"/></a></li>
+            <li role="presentation"><a href="#" onclick="window.open('http://twitter.com/SBSSAF','new'); return false"><img src="/images/twitter_logo.png"/></a></li>
+            <li role="presentation"><a href="#" onclick="window.open('http://story.kakao.com/sbssaf','new'); return false"><img src="/images/kakao_logo.png"/></a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted"><a href="http://www.sbs.co.kr"><img src="/images/white_logo.png" style="padding-top:10px;"/></a></h3>
+      </div>
+      <div class="jumbotron">
+  <div class="fb-like" data-href="https://www.facebook.com/sbssaf" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+        <%if @provider == "twitter"%>
+          <h3>아래에 'Tweet to @SBSSAF' 버튼을 눌러 멘션을 날려주시면 응모가 완료됩니다.</h3>
+          <a href="https://twitter.com/intent/tweet?screen_name=SBSSAF" class="twitter-mention-button" data-size="large" data-related="SBSSAF">Tweet to @SBSSAF</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          <h3>참여해주셔서 감사합니다.</h3>
+        <%else%>
+        <h3>아래 댓글란에 댓글을 남겨주시면 응모가 완료됩니다.</h3><br><Br>
+        <div class="fb-comments" data-href="https://www.facebook.com/sbssaf" data-numposts="10" data-colorscheme="light"></div>
+        <h3>참여해주셔서 감사합니다.</h3>
+        <%end%>
+      </div>
+
+
+      <footer class="footer">
+        <p>© SBS&SBS Contents Hub.</p>
+      </footer>
+
+    </div> <!-- /container -->
