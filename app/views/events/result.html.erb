@@ -1,0 +1,90 @@
+  <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation"><a href="#" onclick="window.open('http://www.facebook.com/sbssaf','new'); return false"><img src="/images/facebook_logo.png"/></a></li>
+            <li role="presentation"><a href="#" onclick="window.open('http://twitter.com/SBSSAF','new'); return false"><img src="/images/twitter_logo.png"/></a></li>
+            <li role="presentation"><a href="#" onclick="window.open('http://story.kakao.com/sbssaf','new'); return false"><img src="/images/kakao_logo.png"/></a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted"><a href="http://www.sbs.co.kr"><img src="/images/white_logo.png" style="padding-top:10px;"/></a></h3>
+      </div>
+
+      <div class="jumbotron">
+        <a href="/events/event_list">
+          <h3>뒤로 가기</h3>
+        </a>
+        <br>
+        <h2>참여 링크</h2>
+        <p>페이스북 전용</p>
+        <a href="/apply/facebook/<%=@promotion.token%>">http://<%=request.domain%>/facebook/<%=@promotion.token%></a>
+        <br><br>
+
+        <p>트위터 전용</p>
+        <a href="/apply/twitter/<%=@promotion.token%>">http://<%=request.domain%>/twitter/<%=@promotion.token%></a>
+
+      </div>
+      <div class="row marketing">
+        <div class="col-lg-12">
+          <h2>참여자 목록(페이지당 100명씩 보여줌)</h2><br>
+          <h3>현재 <%=@promotion.users.count%>명 신청하였습니다.</h3>
+          <%= paginate @users %>
+
+          <br>
+          <table class="table table-bordered table-striped" style="color:black;">
+            <tr>
+              <th>
+                순서
+              </th>
+              <th>
+                이름
+              </th>
+              <th>
+                연락처
+              </th>
+              <th>
+                이메일
+              </th>
+              <th>
+                SNS
+              </th>
+              <th>
+                응모시각
+              </th>
+            </tr>
+            <% num = 1%>
+            <%@users.each do |user|%>
+              <tr>
+                <td>
+                  <%=num%>
+                  <% num += 1%>
+                </td>
+                <td>
+                  <%=user.name%>
+                </td>
+                <td>
+                  <%=user.phone%>
+                </td>
+                <td>
+                  <%=user.email%>
+                </td>
+                <td>
+                  <%=user.provider%>
+                </td>
+                <td>
+                  <%=user.created_at%>
+                </td>
+              </tr>
+            <%end%>
+          </table>
+
+          <%= paginate @users %>
+
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p>© SBS&SBS Contents Hub.</p>
+      </footer>
+
+    </div> <!-- /container -->
