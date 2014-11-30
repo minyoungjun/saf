@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20141129144836) do
     t.text     "content"
     t.string   "token"
     t.string   "post_url"
+    t.string   "img_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -5,6 +5,7 @@ class CreatePromotions < ActiveRecord::Migration
       t.text  :content
       t.string  :token
       t.string  :post_url
+      t.string  :img_url
       t.timestamps
     end
   end

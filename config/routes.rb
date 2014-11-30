@@ -13,6 +13,7 @@ Rails.application.routes.draw do
    get 'apply/:provider/:token' => "events#apply"
    get 'manage/logout' => "events#logout"
    get 'submit/:provider' => "events#sns"
+   post 'events/img_edit'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
