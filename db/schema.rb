@@ -29,6 +29,9 @@ ActiveRecord::Schema.define(version: 20141129144836) do
     t.string   "phone"
     t.string   "email"
     t.string   "provider"
+    t.string   "ip_address"
+    t.string   "post_number"
+    t.string   "address"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

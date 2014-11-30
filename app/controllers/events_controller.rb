@@ -29,14 +29,22 @@ class EventsController < ApplicationController
   end
 
   def save_profile
-    user = User.new
-    user.name = params[:name]
-    user.phone = "#{params[:phone1]}-#{params[:phone2]}-#{params[:phone3]}"
-    user.email = params[:email]
-    user.provider = params[:provider]
-    user.promotion_id = Promotion.where(:token => params[:promotion]).first.id
-    user.save
-    redirect_to  "/submit/#{user.provider}"
+    promotion = Promotion.where(:token => params[:promotion]).first
+    if promotion.users.where(:ip_address => request.remote_ip).count != 0
+      redirect_to :action => "error"
+    else
+      user = User.new
+      user.name = params[:name]
+      user.phone = "#{params[:phone1]}-#{params[:phone2]}-#{params[:phone3]}"
+      user.email = params[:email]
+      user.provider = params[:provider]
+      user.promotion_id = promotion.id
+      user.ip_address = request.remote_ip
+      user.post_number = "#{params[:post1]}-#{params[:post2]}"
+      user.address = "#{params[:address]} #{params[:address_detail]}"
+      user.save
+      redirect_to  "/submit/#{user.provider}"
+    end
   end
 
 
