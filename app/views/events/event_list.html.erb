@@ -62,7 +62,7 @@
               </select>시
               <select name="end_minute">
                 <%0.upto(59) do |minute|%>
-                  <option value="minute">
+                  <option value="<%=minute%>">
                     <%=minute%>
                   </option>
                 <%end%>

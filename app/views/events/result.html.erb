@@ -37,6 +37,45 @@
           <input type="text" class="form-control" value="<%if @promotion.img_url != nil && @promotion.img_url != ""%><%=@promotion.img_url%><%else%>http://<%end%>" name="img_url">
           <input type="text" class="form-control" value="<%=@promotion.post_url%>"name="post_url">
           <br>
+
+          시작:<input type="date" class="form-control" style="width:200px; display:inline-block;" name="start_date" value="<%=@promotion.start_time.to_s[0..9]%>">
+              <select name="start_clock">
+                <%0.upto(23) do |clock|%>
+                  <option value="<%=clock%>"<%if @promotion.start_time.to_s[11..12].to_i == clock%>selected<%end%>>
+                    <%=clock%>
+                  </option>
+                <%end%>
+              </select>시
+              <select name="start_minute">
+                <%0.upto(59) do |minute|%>
+                  <option value="<%=minute%>"<%if @promotion.start_time.to_s[14..15].to_i == minute%>selected<%end%>>
+                    <%=minute%>
+                  </option>
+                <%end%>
+              </select>분
+              (주의, 오전오후아니라 24시까지)
+              <br>
+              <br>
+              종료:<input type="date" class="form-control" style="width:200px; display:inline-block;" name="end_date"value="<%=@promotion.end_time.to_s[0..9]%>">
+              <select name="end_clock">
+                <%0.upto(23) do |clock|%>
+                  <option value="<%=clock%>" <%if @promotion.end_time.to_s[11..12].to_i == clock%>selected<%end%>>
+                    <%=clock%>
+                  </option>
+                <%end%>
+              </select>시
+              <select name="end_minute">
+                <%0.upto(59) do |minute|%>
+                  <option value="<%=minute%>"<%if @promotion.end_time.to_s[14..15].to_i == minute%>selected<%end%>>
+                    <%=minute%>
+                  </option>
+                <%end%>
+              </select>분
+              (주의, 오전오후아니라 24시까지)
+
+
+              <br>
+
           <input type="submit" class="btn btn-info" value="변경하기">
         </form>
 

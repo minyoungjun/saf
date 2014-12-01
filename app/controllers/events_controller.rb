@@ -22,7 +22,23 @@ class EventsController < ApplicationController
       start_minute = params[:start_minute].to_s
     end
 
+
+    if params[:end_clock].to_s.length == 1
+      end_clock = "0#{params[:end_clock]}"
+    else
+      end_clock = params[:end_clock].to_s
+    end
+
+    if params[:end_minute].to_s.length == 1
+      end_minute = "0#{params[:end_minute]}"
+    else
+      end_minute = params[:end_minute].to_s
+    end
+
     promotion.start_time = "#{params[:start_date].to_s} #{start_clock}:#{start_minute}:00"
+    promotion.end_time = "#{params[:end_date].to_s} #{end_clock}:#{end_minute}:00"
+
+
 
     promotion.save
 
