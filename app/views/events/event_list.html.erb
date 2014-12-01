@@ -33,6 +33,44 @@
               <input type="text" name ="post_url" value="https://" class="form-control">
               <h3>프로모션 안내 이미지 URL</h3>
               <input type="text" name ="img_url" value="http://" class="form-control">
+              <br>
+              시작:<input type="date" class="form-control" style="width:200px; display:inline-block;" name="start_date">
+              <select name="start_clock">
+                <%0.upto(23) do |clock|%>
+                  <option value="<%=clock%>">
+                    <%=clock%>
+                  </option>
+                <%end%>
+              </select>시
+              <select name="start_minute">
+                <%0.upto(59) do |minute|%>
+                  <option value="<%=minute%>">
+                    <%=minute%>
+                  </option>
+                <%end%>
+              </select>분
+              (주의, 오전오후아니라 24시까지)
+              <br>
+              <br>
+              종료:<input type="date" class="form-control" style="width:200px; display:inline-block;" name="end_date">
+              <select name="end_clock">
+                <%0.upto(23) do |clock|%>
+                  <option value="<%=clock%>">
+                    <%=clock%>
+                  </option>
+                <%end%>
+              </select>시
+              <select name="end_minute">
+                <%0.upto(59) do |minute|%>
+                  <option value="minute">
+                    <%=minute%>
+                  </option>
+                <%end%>
+              </select>분
+              (주의, 오전오후아니라 24시까지)
+
+
+              <br>
             </div>
             <br>
             <input type="submit" class="btn btn-info" value="생성">

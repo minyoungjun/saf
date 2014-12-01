@@ -14,18 +14,20 @@
           <input name="provider" type="hidden" value="<%=@provider%>" >
           <input name="promotion" type="hidden" value="<%=@promotion.token%>" >
           <div class="jumbotron">
-            <h1>이 프로모션은 마감되었습니다. 다른 프로모션에 응모해주시기 바랍니다.</h1>
-            <!--
         <h1><img src="/images/big_logo.png"/></h1>
         <br>
         <h2>현재 응모 달성률 <%=((@promotion.users.count.to_f)/(10.to_f)).to_f.round(0)%>%</h2>
         <h2><%if @promotion.img_url != nil && @promotion.img_url != "" && @promotion.img_url != "http://" %><img src="<%=@promotion.img_url%>"style="width:100%;"/><%else%>등록된 설명(이미지)이 없습니다.<%end%></h2>
-        -->
+            <%if ((Time.now - @promotion.start_time) < 0)%>
+              <h2>이 프로모션은 시작되지 않았습니다.</h2>
+            <%elsif (Time.now - @promotion.end_time) > 0%>
+              <h2>이 프로모션은 마감되었습니다. 다른 프로모션에 응모해주시기 바랍니다.</h2>
+            <%end%>
         
       </div>
       <div class="row marketing">
 
-      <!--
+        <%if ((Time.now - @promotion.start_time) > 0) && ((Time.now - @promotion.end_time) < 0)%>
         <div class="col-lg-12">
             <div class="form-group">
               <h3>이름</h3>
@@ -41,30 +43,33 @@
             </div>
             <br>
 
-
-            <div class="form-group">
-            <h3>주소</h3>
-            <br>
-            <h5>우편번호</h5>
-
-      <input type="text" id="pc1"  name="post1" class="form-control" style="width:100px; display:inline-block;" onclick="expandDaumPostcode()"   > - <input type="text" id="pc2"  name="post2" class="form-control" style="width:100px; display:inline-block;"onclick="expandDaumPostcode"  >
-      <input type="button" onclick="expandDaumPostcode()" value="우편번호 찾기" class="btn btn-info"><br>
-
-    <div id="wrap" style="display:none;border:1px solid; width:100%; height:300px;margin:5px 0;position:relative;-webkit-overflow-scrolling:touch;">
-    <img src="//i1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px" onclick="foldDaumPostcode()" alt="접기 버튼">
-    </div>
-    <h5>주소</h5>
-    <input type="text" id="addrStr" name="address" class="form-control" onclick="expandDaumPostcode()" placeholder="위쪽의 우편번호를 먼저 입력해주세요.">
-      <br>
-      <input type="text" id="address_detail" class="form-control"  placeholder ="상세주소" name="address_detail" id="address_detail">
-              <h5 style="color:#bbb">티켓이 우편으로 발송되므로 주소를 정확히 기재해주세요.</h5>
-
-
-
-
-
+            <div class="form-group form-inline">
+              <h3>생년월일</h3>
+              <select name="year" class="form-control">
+                <%2014.downto(1915) do |x|%>
+                  <option value="<%=x%>"><%=x%></option>
+                <%end%>
+              </select>
+              년
+              <select name="month" class="form-control">
+                <%1.upto(12) do |x|%>
+                  <option value="<%=x%>">
+                    <%=x%>
+                  </option>
+                <%end%>
+              </select>
+              월
+              <select name="day" class="form-control">
+                <%1.upto(31) do |x|%>
+                  <option value="<%=x%>">
+                    <%=x%>
+                  </option>
+                <%end%>
+              </select>일
+              <h5 style="color:#bbb">본인 확인을 위해 필요한 정보입니다. 정확히 입력해주세요.</h5>
             </div>
             <br>
+
             <style> 
 .table {
   border-radius:2px;
@@ -104,7 +109,7 @@
                   참여내용 확인 및 상품 발송
                 </td>
                 <td>
-                  이름, 휴대전화번호, 주소
+                  이름, 휴대전화번호, 생년월일
                 </td>
                 <td>
                   2주일
@@ -118,8 +123,10 @@
           </form>
 
         </div>
+
+
+      <%end%>
       </div>
-      -->
 
       <footer class="footer">
         <p>© SBS&SBS 소셜미디어팀</p>
@@ -165,11 +172,6 @@ $('form').submit(function () {
         $('#phone_3').focus();
         return false;
     }
-    if (address_detail === '') {
-        alert('상세주소를 입력해주세요. 티켓은 우편으로 발송되므로 주소를 정확하게 기재해주세요.');
-        $('#address_detail').focus();
-        return false;
-    }
 
     if (terms){
     }
@@ -184,40 +186,3 @@ $('form').submit(function () {
 
 </script>
 
-<script>
-    // 우편번호 찾기 iframe을 넣을 element
-    var element = document.getElementById('wrap');
-
-    function foldDaumPostcode() {
-        // iframe을 넣은 element를 안보이게 한다.
-        element.style.display = 'none';
-    }
-
-    function expandDaumPostcode() {
-        // 현재 scroll 위치를 저장해놓는다.
-        var currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-                // 우편번호와 주소 및 영문주소 정보를 해당 필드에 넣는다.
-                document.getElementById('pc1').value = data.postcode1;
-                document.getElementById('pc2').value = data.postcode2;
-                document.getElementById('addrStr').value = data.address;
-                // iframe을 넣은 element를 안보이게 한다.
-                element.style.display = 'none';
-                // 우편번호 찾기 화면이 보이기 이전으로 scroll 위치를 되돌린다.
-                document.body.scrollTop = currentScroll;
-            },
-            // 우편번호 찾기 화면 크기가 조정되었을때 실행할 코드를 작성하는 부분.
-            // iframe을 넣은 element의 높이값을 조정한다.
-            onresize : function(size) {
-                element.style.height = size.height + "px";
-            },
-            width : '100%',
-            height : '100%'
-        }).embed(element);
-
-        // iframe을 넣은 element를 보이게 한다.
-        element.style.display = 'block';
-    }
-</script>
