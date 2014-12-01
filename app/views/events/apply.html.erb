@@ -25,15 +25,15 @@
         <div class="col-lg-12">
             <div class="form-group">
               <h3>이름</h3>
-              <input type="text" class="form-control" placeholder="이름" required style="width:150px;" name="name">
+              <input type="text" class="form-control" placeholder="이름"  style="width:150px;" name="name" id="name_field">
               <h5 style="color:#bbb">티켓 교환 시 본인 확인이 되지 않을 경우 입장이 제한될 수 있으므로 반드시 실명 기재 바랍니다.</h5>
             </div>
             <br>
             <div class="form-group form-inline">
               <h3>연락처(휴대전화 번호)</h3>
-              <input type="text" class="form-control"  required style="width:65px; display:inline-block;" name="phone1"> - 
-              <input type="text" class="form-control"  required style="width:65px; display:inline-block;" name="phone2"> -
-              <input type="text" class="form-control"  required style="width:65px; display:inline-block;" name="phone3">
+              <input type="text" class="form-control"   style="width:65px; display:inline-block;" name="phone1" id="phone_1"> - 
+              <input type="text" class="form-control"   style="width:65px; display:inline-block;" name="phone2" id="phone_2"> -
+              <input type="text" class="form-control"   style="width:65px; display:inline-block;" name="phone3" id="phone_3">
             </div>
             <br>
 
@@ -52,7 +52,7 @@
     <h5>주소</h5>
     <input type="text" id="addrStr" name="address" class="form-control" onclick="expandDaumPostcode()" placeholder="위쪽의 우편번호를 먼저 입력해주세요.">
       <br>
-      <input type="text" id="address_detail" class="form-control"  placeholder ="상세주소" required name="address_detail">
+      <input type="text" id="address_detail" class="form-control"  placeholder ="상세주소" name="address_detail" id="address_detail">
               <h5 style="color:#bbb">티켓이 우편으로 발송되므로 주소를 정확히 기재해주세요.</h5>
 
 
@@ -107,7 +107,7 @@
                 </td>
               </tr>
         </table>
-        <h5><input type="checkbox" required > 위의 개인정보 활용 내용을 읽었으며 개인정보 제공에 동의합니다.(응모시 동의 필수)</h5>
+        <h5><input type="checkbox" id="terms" name="terms" > 위의 개인정보 활용 내용을 읽었으며 개인정보 제공에 동의합니다.(응모시 동의 필수)</h5>
         <br>
         <br>
             <input type="submit" class="btn btn-info" value="다음 단계로">
@@ -121,7 +121,63 @@
       </footer>
 
     </div> <!-- /container -->
+    <script>
 
+
+
+$('form').submit(function () {
+
+    // Get the Login Name value and trim it
+    var name = $.trim($('#name_field').val());
+    var phone_1 = $.trim($('#phone_1').val());
+    var phone_2 = $.trim($('#phone_2').val());
+    var phone_3 = $.trim($('#phone_3').val());
+    var address_detail = $.trim($('#address_detail').val());
+    var terms = document.getElementById("terms").checked;
+
+
+    // Check if empty of not
+    if (name === '') {
+        alert('이름을 입력해주세요.');
+        $('#name_field').focus();
+        return false;
+    }
+
+
+    if (phone_1 === '') {
+        alert('연락처를 입력해주세요.');
+        $('#phone_1').focus();
+        return false;
+    }
+
+    if (phone_2 === '') {
+        alert('연락처를 입력해주세요.');
+        $('#phone_2').focus();
+        return false;
+    }
+    if (phone_3 === '') {
+        alert('연락처를 입력해주세요.');
+        $('#phone_3').focus();
+        return false;
+    }
+    if (address_detail === '') {
+        alert('상세주소를 입력해주세요. 티켓은 우편으로 발송되므로 주소를 정확하게 기재해주세요.');
+        $('#address_detail').focus();
+        return false;
+    }
+
+    if (terms){
+    }
+    else{
+      alert("개인정보 제공에 동의를 해주셔야합니다.");
+      $("#terms").focus();
+      return false;
+    }
+
+});
+
+
+</script>
 
 <script>
     // 우편번호 찾기 iframe을 넣을 element
