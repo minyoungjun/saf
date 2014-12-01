@@ -25,10 +25,12 @@
       </div>
       <div class="jumbotron">
         <br>
-        <h2>프로모션 제목, 안내 이미지 수정 하기</h2>
+        <h2>프로모션 수정 하기</h2>
         <br>
         <form role="form" action="/events/img_edit" method="post">
           <input type="text" class="form-control" placeholder ="제목" name="title" value="<%=@promotion.title%>">
+          <br>
+          <textarea placeholder="개인정보취급방침" name="content" style="background-color:white;" class="form-control" rows="4"><%=@promotion.content%></textarea>
           <br>
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" >
           <input type="hidden" name = "promotion_id" value="<%=@promotion.id%>">
