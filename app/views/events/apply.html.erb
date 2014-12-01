@@ -36,11 +36,6 @@
               <input type="text" class="form-control"  required style="width:65px; display:inline-block;" name="phone3">
             </div>
             <br>
-            <div class="form-group">
-              <h3>이메일 주소</h3>
-              <input type="email" class="form-control"  required  placehorder="email" name="email">
-            </div>
-            <br>
 
 
             <div class="form-group">
@@ -66,12 +61,56 @@
 
             </div>
             <br>
-        <h4>개인정보 취급방침</h4>
-        <textarea disabled class="form-control" rows="4" style="background:white;"><%=@promotion.content%></textarea>
-        <h5><input type="checkbox" required > 위의 개인정보취급방침에 동의합니다.</h5>
+            <style> 
+.table {
+  border-radius:2px;
+}
+.table tr td {
+  text-align:center;
+  background-color:white;
+  color:#9b238e;
+}
+.table tr th {
+  text-align:center;
+  background-color:#7dcef5;
+}
+            </style>
+            <h4>개인정보 활용 내용</h4><p>(본 개인정보의 취급은 기본적으로 <a href="http://w3.sbs.co.kr/cs/customerPrivacy.do" style="color:#7dcef5; text-decoration:underline;">당사(SBS)의 개인정보취급방침</a>을 따릅니다.)</p>
+            <table class="table">
+              <tr>
+                <th>
+                  개인정보<br>수집주체
+                </th>
+                <th>
+                  개인정보<br>이용 목적
+                </th>
+                <th>
+                  개인정보의 항목
+                </th>
+                <th>
+                  개인정보 보유 및<br>이용기간
+                </th>
+                
+              </tr>
+              <tr>
+                <td>
+                  SBS 소셜미디어팀
+                </td>
+                <td>
+                  참여내용 확인 및 상품 발송
+                </td>
+                <td>
+                  이름, 휴대전화번호, 주소
+                </td>
+                <td>
+                  2주일
+                </td>
+              </tr>
+        </table>
+        <h5><input type="checkbox" required > 위의 개인정보 활용 내용을 읽었으며 개인정보 제공에 동의합니다.(응모시 동의 필수)</h5>
         <br>
-
-            <input type="submit" class="btn btn-info" value="저장">
+        <br>
+            <input type="submit" class="btn btn-info" value="다음 단계로">
           </form>
 
         </div>
