@@ -37,7 +37,6 @@ class EventsController < ApplicationController
       user = User.new
       user.name = params[:name]
       user.phone = "#{params[:phone1]}-#{params[:phone2]}-#{params[:phone3]}"
-      user.email = params[:email]
       user.provider = params[:provider]
       user.promotion_id = promotion.id
       user.ip_address = request.remote_ip
