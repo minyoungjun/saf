@@ -17,7 +17,7 @@
         <h1><img src="/images/big_logo.png"/></h1>
         <br>
         <h2>현재 응모 달성률 <%=((@promotion.users.count.to_f)/(10.to_f)).to_f.round(0)%>%</h2>
-        <h2><%if @promotion.img_url != nil && @promotion.img_url != "" && @promotion.img_url != "http://" %><img src="<%=@promotion.img_url%>"/><%else%>등록된 설명(이미지)이 없습니다.<%end%></h2>
+        <h2><%if @promotion.img_url != nil && @promotion.img_url != "" && @promotion.img_url != "http://" %><img src="<%=@promotion.img_url%>"style="width:100%;"/><%else%>등록된 설명(이미지)이 없습니다.<%end%></h2>
         
       </div>
 
