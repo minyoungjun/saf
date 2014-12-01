@@ -7,6 +7,7 @@ class EventsController < ApplicationController
     promotion = Promotion.find(params[:promotion_id])
     promotion.title = params[:title]
     promotion.img_url = params[:img_url]
+    promotion.post_url = params[:post_url]
     promotion.content = params[:content]
     promotion.save
     redirect_to :action => "result", :controller => "events", :id => promotion.id

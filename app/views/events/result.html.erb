@@ -30,11 +30,12 @@
         <form role="form" action="/events/img_edit" method="post">
           <input type="text" class="form-control" placeholder ="제목" name="title" value="<%=@promotion.title%>">
           <br>
-          <textarea placeholder="개인정보취급방침" name="content" style="background-color:white;" class="form-control" rows="4"><%=@promotion.content%></textarea>
+          <textarea placeholder="내용" name="content" style="background-color:white;" class="form-control" rows="4"><%=@promotion.content%></textarea>
           <br>
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" >
           <input type="hidden" name = "promotion_id" value="<%=@promotion.id%>">
           <input type="text" class="form-control" value="<%if @promotion.img_url != nil && @promotion.img_url != ""%><%=@promotion.img_url%><%else%>http://<%end%>" name="img_url">
+          <input type="text" class="form-control" value="<%=@promotion.post_url%>"name="post_url">
           <br>
           <input type="submit" class="btn btn-info" value="변경하기">
         </form>
