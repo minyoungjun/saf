@@ -93,6 +93,12 @@
                 순서
               </th>
               <th>
+                20일
+              </th>
+              <th>
+                21일
+              </th>
+              <th>
                 이름
               </th>
               <th>
@@ -114,6 +120,20 @@
                 <td>
                   <%=num%>
                   <% num += 1%>
+                </td>
+                <td>
+                  <%if user.firstdate%>
+                    O
+                  <%else%>
+                    X
+                  <%end%>
+                </td>
+                <td>
+                  <%if user.seconddate%>
+                    O
+                  <%else%>
+                    X
+                  <%end%>
                 </td>
                 <td>
                   <%=user.name%>

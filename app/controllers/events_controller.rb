@@ -88,6 +88,8 @@ class EventsController < ApplicationController
       user.post_number = "#{params[:post1]}-#{params[:post2]}"
       user.address = "#{params[:address]} #{params[:address_detail]}"
       user.birth = params[:year].to_s[2..3] + birth_month + birth_day
+      user.firstdate = params[:firstdate]
+      user.seconddate = params[:seconddate]
       user.save
       redirect_to  "/submit/#{user.provider}"
     end

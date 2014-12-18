@@ -28,7 +28,17 @@
       <div class="row marketing">
 
         <%if ((Time.now - @promotion.start_time) > 0) && ((Time.now - @promotion.end_time) < 0)%>
-        <div class="col-lg-12">
+          <div class="col-lg-12">
+
+            <div class="form-group">
+              <h3>날짜 선택</h3><br>
+              <input type="checkbox" name="firstdate" id="chk1"><label for="chk1" >20일</label><br><br>
+              <input type="checkbox" name="seconddate" id="chk2"><label for="chk2">21일</label>
+              <h5 style="color:#bbb">가능하신 날짜에 체크를 해주십시오. 이틀 모두 신청하실 수 있습니다.</h5>
+            </div>
+
+            <br>
+
             <div class="form-group">
               <h3>이름</h3>
               <input type="text" class="form-control" placeholder="이름"  style="width:150px;" name="name" id="name_field">
