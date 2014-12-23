@@ -1,0 +1,107 @@
+  <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation"><a href="#" onclick="window.open('http://www.facebook.com/sbssaf','new'); return false"><img src="/images/facebook_logo.png"/></a></li>
+            <li role="presentation"><a href="#" onclick="window.open('http://twitter.com/SBSSAF','new'); return false"><img src="/images/twitter_logo.png"/></a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted"><a href="http://www.sbs.co.kr"><img src="/images/white_logo.png" style="padding-top:10px;"/></a></h3>
+      </div>
+
+      <div class="jumbotron">
+        <a href="/events/result/<%=@promotion.id%>">
+          <h3>뒤로 가기</h3>
+        </a>
+      </div>
+      <div class="row marketing">
+        <div class="col-lg-12">
+          <h2>참여자 검색(이름, 전화번호를 입력하세요)</h2>
+          <form action="/events/search" method="get">
+            <input type="text" placeholder="이름 혹은 전화번호" class="form-control" name="name">
+            <input type="hidden" name="promotion" value="<%=@promotion.id%>">
+            <br>
+            <input type="submit" class="btn btn-info" value="검색">
+            </form>
+            <br><br>
+            <h2>검색결과</h2><br>
+
+          <table class="table table-bordered table-striped" style="color:black;">
+            <tr>
+              <th>
+                순서
+              </th>
+              <th>
+                20일
+              </th>
+              <th>
+                21일
+              </th>
+              <th>
+                이름
+              </th>
+              <th>
+                연락처
+              </th>
+              <th>
+                생년월일
+              </th>
+              <th>
+                SNS
+              </th>
+              <th>
+                응모시각
+              </th>
+            </tr>
+            <% num = 1%>
+            <%if @user.count != 0%>
+              <%@user.each do |user|%>
+                <tr>
+                  <td>
+                    <%=num%>
+                    <% num += 1%>
+                  </td>
+                  <td>
+                    <%if user.firstdate%>
+                      O
+                    <%else%>
+                      X
+                    <%end%>
+                  </td>
+                  <td>
+                    <%if user.seconddate%>
+                      O
+                    <%else%>
+                      X
+                    <%end%>
+                  </td>
+                  <td>
+                    <%=user.name%>
+                  </td>
+                  <td>
+                    <%=user.phone%>
+                  </td>
+                  <td>
+                    <%=user.birth%>
+                  </td>
+                  <td>
+                    <%=user.provider%>
+                  </td>
+                  <td>
+                    <%=user.created_at%>
+                  </td>
+                </tr>
+              <%end%>
+            <%else%>
+              <h3>검색 결과가 없습니다.</h3>
+            <%end%>
+          </table>
+
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p>© SBS&SBS 소셜미디어팀</p>
+      </footer>
+
+    </div> <!-- /container -->

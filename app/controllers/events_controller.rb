@@ -1,7 +1,12 @@
 class EventsController < ApplicationController
 
-  before_filter :is_admin, :only => [:new, :event_list, :result, :img_edit]
+  before_filter :is_admin, :only => [:new, :event_list, :result, :img_edit, :search]
+  def search
+    @promotion = Promotion.find(params[:promotion])
+    users = User.where(:promotion_id => @promotion.id)
+    @user = users.where(:name => params[:name]) + users.where(:phone => params[:name])
 
+  end
 
   def img_edit
     promotion = Promotion.find(params[:promotion_id])
@@ -113,7 +118,7 @@ class EventsController < ApplicationController
   end
 
   def login
-    if params[:username] == "kdh" && params[:password] == "rlaehdgnl1@"
+    if params[:username] == "saf" && params[:password] == "saf1@"
       session[:admin] = "admin"
       redirect_to :action => "event_list"
     else

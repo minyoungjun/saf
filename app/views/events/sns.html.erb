@@ -10,17 +10,7 @@
       </div>
       <div class="jumbotron">
   <div class="fb-like" data-href="https://www.facebook.com/sbssaf" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-        <%if @provider == "twitter"%>
-          <h3>아래에 'Tweet to @SBSSAF' 버튼을 눌러 멘션을 날려주시면 응모가 완료됩니다.</h3>
-          <a href="https://twitter.com/intent/tweet?screen_name=SBSSAF" class="twitter-mention-button" data-size="large" data-related="SBSSAF">Tweet to @SBSSAF</a>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-          <h3>참여해주셔서 감사합니다.</h3>
-        <%else%>
-          <h3>아래 포스팅에 댓글을 남겨주시면 응모가 완료됩니다.</h3><br><Br>
-
-          <div class="fb-post" data-href="<%=Promotion.last.post_url%>" style="width:100%;"></div>
-        <h3>참여해주셔서 감사합니다.</h3>
-        <%end%>
+  <h3>이벤트 참여 신청이 완료되었습니다.<br><br>개별 연락 절차없이 SAF에 방문하시면 현장에서 티켓을 배부해 드립니다.<br><br>SAF에서 만나요! (*신분증 지참)</h3>
       </div>
 
 

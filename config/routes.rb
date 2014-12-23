@@ -14,6 +14,7 @@ Rails.application.routes.draw do
    get 'manage/logout' => "events#logout"
    get 'submit/:provider' => "events#sns"
    post 'events/img_edit'
+   get 'events/search'
    get 'events/error'
 
   # Example of regular route:
