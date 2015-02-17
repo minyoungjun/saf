@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string  :ip_address
       t.string  :post_number
       t.string  :address
+      t.text  :content
 
       t.timestamps
     end

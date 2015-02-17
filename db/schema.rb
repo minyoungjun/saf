@@ -23,9 +23,6 @@ ActiveRecord::Schema.define(version: 20141218141414) do
     t.datetime "updated_at"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.integer  "newdate"
-    t.boolean  "firstdate",  default: false
-    t.boolean  "seconddate", default: false
   end
 
   create_table "users", force: true do |t|
@@ -37,11 +34,12 @@ ActiveRecord::Schema.define(version: 20141218141414) do
     t.string   "ip_address"
     t.string   "post_number"
     t.string   "address"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "birth"
-    t.boolean  "seconddate"
-    t.boolean  "firstdate"
+    t.boolean  "seconddate",   default: false
+    t.boolean  "firstdate",    default: false
   end
 
   create_table "wrongs", force: true do |t|

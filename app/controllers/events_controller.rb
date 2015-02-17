@@ -95,6 +95,7 @@ class EventsController < ApplicationController
       user.birth = params[:year].to_s[2..3] + birth_month + birth_day
       user.firstdate = params[:firstdate]
       user.seconddate = params[:seconddate]
+      user.content = params[:content]
       user.save
       redirect_to  "/submit/#{user.provider}"
     end

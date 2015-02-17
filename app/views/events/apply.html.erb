@@ -14,7 +14,6 @@
           <input name="provider" type="hidden" value="<%=@provider%>" >
           <input name="promotion" type="hidden" value="<%=@promotion.token%>" >
           <div class="jumbotron">
-        <h1><img src="/images/big_logo.png"/></h1>
         <br>
         <h2><%if @promotion.img_url != nil && @promotion.img_url != "" && @promotion.img_url != "http://" %><img src="<%=@promotion.img_url%>"style="width:100%;"/><%else%>등록된 설명(이미지)이 없습니다.<%end%></h2>
             <%if ((Time.now - @promotion.start_time) < 0)%>
@@ -51,6 +50,11 @@
               <input type="text" class="form-control"   style="width:65px; display:inline-block;" name="phone2" id="phone_2"> -
               <input type="text" class="form-control"   style="width:65px; display:inline-block;" name="phone3" id="phone_3">
               <h5 style="color:#bbb">문자메시지로 모바일 티켓이 발송됩니다. 정확하게 입력해주세요.</h5>
+            </div>
+            <br>
+            <div class="form-group">
+              <h3>자신의 현재 고민들</h3>
+              <textarea  class="form-control" name="content" placeholder="자신의 현재 고민들..."></textarea>
             </div>
             <br>
 
